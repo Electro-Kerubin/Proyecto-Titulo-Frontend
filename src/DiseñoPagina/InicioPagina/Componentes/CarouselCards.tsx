@@ -11,7 +11,7 @@ export const CarouselCards: React.FC<{ libro: LibroModelo }> = (props) => {
                         height='233'
                     />
                     :
-                    <img src={require('./../../../ImagenesWeb/Libros/book-luv2code-1000.png')} alt="libro"
+                    <img src={require('./../../../ImagenesWeb/Libros/rubius.jpg')} alt="libro"
                         width='151'
                         height='233'
                     />

@@ -11,7 +11,7 @@ export const RetornaLibro: React.FC<{ libro: LibroModelo }> = (info) => {
                         {info.libro.img ?
                             <img src={info.libro.img} alt="libro" width="123" height="196" />
                             :
-                            <img src={require("../../../ImagenesWeb//Libros/new-book-1.png")}
+                            <img src={require("../../../ImagenesWeb//Libros/rubius.jpg")}
                                 alt="libro" width="123" height="196" />
                         }
                     </div>
@@ -19,7 +19,7 @@ export const RetornaLibro: React.FC<{ libro: LibroModelo }> = (info) => {
                         {info.libro.img ?
                             <img src={info.libro.img} alt="libro" width="123" height="196" />
                             :
-                            <img src={require("../../../ImagenesWeb//Libros/new-book-1.png")}
+                            <img src={require("../../../ImagenesWeb/Libros/rubius.jpg")}
                                 alt="libro" width="123" height="196" />
                         }
                     </div>

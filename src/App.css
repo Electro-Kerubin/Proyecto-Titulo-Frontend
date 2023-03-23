@@ -3,7 +3,7 @@
 }
 
 .header {
-    background-image: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url("./ImagenesWeb/Publicas/image-2.jpg");
+    background-image: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url("./ImagenesWeb/Publicas/foto-1.jpg");
     opacity: var(--mainOpacity);
     height: 25em !important;
 }
@@ -26,17 +26,17 @@ background-color: #000000 ;
 }
 
 .col-image-left {
-    background-image: url("./ImagenesWeb/Publicas/image-4.jpg");
+    background-image: url("./ImagenesWeb/Publicas/foto-3.jpg");
     height: 25em !important;
 }
 
 .col-image-right {
-    background-image: url("./ImagenesWeb/Publicas/image-1.jpg");
+    background-image: url("./ImagenesWeb/Publicas/foto-2.jpg");
     height: 25em !important;
 }
 
 .lost-image {
-    background-image: url("./ImagenesWeb/Publicas/image-3.jpg");
+    background-image: url("./ImagenesWeb/Publicas/foto-3.jpg");
     height: 25em !important;
     width: "720"
 }
