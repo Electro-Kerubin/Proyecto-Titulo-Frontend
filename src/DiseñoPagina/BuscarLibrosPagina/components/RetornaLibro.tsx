@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import LibroModelo from "../../../Modelos/LibroModelo"
 
 export const RetornaLibro: React.FC<{ libro: LibroModelo }> = (info) => {
@@ -38,9 +39,9 @@ export const RetornaLibro: React.FC<{ libro: LibroModelo }> = (info) => {
                     </div>
                 </div>
                 <div className="col-md-4 d-flex justify-content-center align-items-center">
-                    <a href="#" className="btn btn-md main-color text-white">
+                    <Link to={`/info/${info.libro.id}`} className="btn btn-md main-color text-white">
                         Ver libro
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>

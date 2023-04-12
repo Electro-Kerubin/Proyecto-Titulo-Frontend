@@ -4,7 +4,7 @@ export const Navbar = () => {
     return (
         <nav className='navbar navbar-expand-lg navbar-dark main-color py-3'>
             <div className='container-fluid'>
-                <a className='navbar-brand' href="#">Juegos de Mesa Nerfilin</a>
+                <NavLink className='navbar-brand' to="/">Juegos de Mesa Nerfilin</NavLink>
                 <button className='navbar-toggler' type='button' data-bs-toggle='collapse'
                     data-bs-target='#navbarNavDespliege'
                     aria-controls='navbarNavDespliege' aria-expended='false' aria-label='Toggle Navigation' >

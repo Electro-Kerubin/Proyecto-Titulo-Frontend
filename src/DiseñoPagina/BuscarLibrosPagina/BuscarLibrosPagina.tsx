@@ -16,7 +16,7 @@ export const BuscarLibrosPagina = () => {
     const [totalPaginas, setTotalPaginas] = useState(0);
     const [buscarLibro, setBuscarLibro] = useState('');
     const [searchUrl, setSearchUrl] = useState('');
-    const [categoriaOpt, setCategoriaOpt] = useState('');
+    const [categoriaOpt, setCategoriaOpt] = useState('Categoria');
 
     // buscar libros
     useEffect(() => {

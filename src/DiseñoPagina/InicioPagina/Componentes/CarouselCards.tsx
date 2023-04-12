@@ -1,5 +1,6 @@
 import React from 'react'
 import LibroModelo from '../../../Modelos/LibroModelo';
+import { Link } from 'react-router-dom';
 
 export const CarouselCards: React.FC<{ libro: LibroModelo }> = (props) => {
     return (
@@ -18,7 +19,7 @@ export const CarouselCards: React.FC<{ libro: LibroModelo }> = (props) => {
                 }
                 <h6 className="mt-2">{props.libro.titulo}</h6>
                 <p>{props.libro.autor}</p>
-                <a className="btn main-color text-white" href="#">Reservar</a>
+                <Link className="btn main-color text-white" to={`/info/${props.libro.id}`}>Reservar</Link>
             </div>
         </div>
     );

@@ -2,6 +2,7 @@ import { CarouselCards } from "./CarouselCards";
 import { useEffect, useState } from "react";
 import LibroModelo from "../../../Modelos/LibroModelo";
 import { SpinnerLoading } from "../../Utilidad/SpinnerLoading";
+import { Link } from "react-router-dom";
 
 
 export const Carousel = () => {
@@ -70,7 +71,7 @@ export const Carousel = () => {
     return (
         <div className="container mt-5" style={{ height: 550 }}>
             <div className="inicio-carousel">
-                <h3>asdasds</h3>
+                <h3>Titulo agregar</h3>
             </div>
             <div id="carousel-control" className="carousel slide carousel-dark slide mt-5 d-none d-lg-block"
                 data-bs-interval="false" data-bs-ride="carousel">
@@ -115,7 +116,7 @@ export const Carousel = () => {
                 </div>
             </div>
             <div className="inicio-carousel d-flex justify-content-center mt-3">
-                <a className="btn btn-outline-secondary btn-lg" href="#">Ver más</a>
+                <Link className="btn btn-outline-secondary btn-lg" to="/buscar">Ver más</Link>
             </div>
         </div>
     );
