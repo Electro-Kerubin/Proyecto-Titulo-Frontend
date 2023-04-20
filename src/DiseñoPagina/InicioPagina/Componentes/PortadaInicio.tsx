@@ -1,4 +1,11 @@
+import { useOktaAuth } from "@okta/okta-react";
+import { Link } from "react-router-dom";
+
 export const PortadaInicio = () => {
+
+    const { authState } = useOktaAuth();
+
+
     return (
         <div>
             <div className="d-none d-lg-block">
@@ -14,7 +21,12 @@ export const PortadaInicio = () => {
                                 Nos encantaria saber que has estado leyendo. <br />
                                 Ya sea una novela o enciclopedia, te proveeremos de los mejores libros.
                             </p>
-                            <a className="btn main-color text-white btn-lg" href="#">Ingresar</a>
+                            {authState?.isAuthenticated ?
+                                <Link type="button" className="btn main-color text-white btn-lg" to='/buscar'>Encuentra mas libros</Link>
+                                :
+                                <Link className="btn main-color text-white btn-lg" to='/login'>Ingresar</Link>
+                            }
+
                         </div>
                     </div>
                 </div>
@@ -42,7 +54,11 @@ export const PortadaInicio = () => {
                                 Nos encantaria saber que has estado leyendo. <br />
                                 Ya sea una novela o enciclopedia, te proveeremos de los mejores libros.
                             </p>
-                            <a className="btn main-color text-white btn-lg" href="#">Ingresar</a>
+                            {authState?.isAuthenticated ?
+                                <Link to='/buscar' className="btn main-color text-white btn-lg">Encuentra mas libros</Link>
+                                :
+                                <Link className="btn main-color text-white btn-lg" to='/login'>Ingresar</Link>
+                            }
                         </div>
                     </div>
                     <div className="m-2">
