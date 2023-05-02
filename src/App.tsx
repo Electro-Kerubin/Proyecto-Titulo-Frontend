@@ -5,11 +5,13 @@ import { BuscarLibrosPagina } from './DiseñoPagina/BuscarLibrosPagina/BuscarLib
 import { InicioPagina } from './DiseñoPagina/InicioPagina/InicioPagina';
 import { Footer } from './DiseñoPagina/Navbar&Footer/Footer';
 import { Navbar } from './DiseñoPagina/Navbar&Footer/Navbar';
-import { SeccionLibro } from './DiseñoPagina/SeccionLibro/SeccionLibro';
+import { SeccionLibro } from './DiseñoPagina/InfoLibro/SeccionLibro';
 import { oktaConfig } from './lib/oktaConfig';
 import { OktaAuth, toRelativeUrl } from '@okta/okta-auth-js';
-import { LoginCallback, Security } from '@okta/okta-react';
+import { LoginCallback, SecureRoute, Security } from '@okta/okta-react';
 import LoginWidget from './Auth/LoginWidget';
+import { ListaResenaPage } from './DiseñoPagina/ListaResenas/ListaResenaPage';
+import { TusPrestamosPage } from './DiseñoPagina/TusPrestamos/TusPrestamosPage';
 
 const oktaAuth = new OktaAuth(oktaConfig);
 
@@ -40,11 +42,18 @@ export const App = () => {
             <Route path='/buscar'>
               <BuscarLibrosPagina />
             </Route>
+            <Route path='/resenas/:id'>
+              <ListaResenaPage />
+            </Route>
             <Route path='/info/:id'>
               <SeccionLibro />
             </Route>
             <Route path='/login' render={() => <LoginWidget config={oktaConfig} />} />
             <Route path='/login/callback' component={LoginCallback} />
+
+            <SecureRoute path='/tusprestamos'>
+              <TusPrestamosPage />
+            </SecureRoute>
           </Switch>
         </div>
         <Footer />
