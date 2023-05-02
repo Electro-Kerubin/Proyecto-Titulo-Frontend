@@ -121,7 +121,7 @@ export const BuscarLibrosPagina = () => {
     let ultimoItem = librosPorPagina * paginaActual <= totalCantidadLibros ?
         librosPorPagina * paginaActual : totalCantidadLibros;
 
-    const paginacion = (numPagina: number) => setPaginaActual(numPagina);
+    const paginador = (numPagina: number) => setPaginaActual(numPagina);
 
     return (
         <div>
@@ -185,7 +185,7 @@ export const BuscarLibrosPagina = () => {
                         </div>
                     }
                     {totalPaginas > 1 &&
-                        <Paginador paginaActual={paginaActual} totalPaginas={totalPaginas} pagina={paginacion} />
+                        <Paginador paginaActual={paginaActual} totalPaginas={totalPaginas} paginador={paginador} />
                     }
                 </div>
             </div>
