@@ -1,0 +1,41 @@
+[33mcommit 1ae2e6b12c70a4abeb87752e56ba33561420f7f1[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Electro-kerubin <rbcirano.90@gmail.com>
+Date:   Thu Apr 20 17:27:46 2023 -0400
+
+    actualizacion frontend y creacion de login
+
+[33mcommit abbb4b91575620cb2356303f2a971c70d8527603[m
+Author: Electro-kerubin <rbcirano.90@gmail.com>
+Date:   Wed Apr 12 23:57:38 2023 -0400
+
+    seccion reseñas y box de prestamos, info de prestamos
+
+[33mcommit 48f9a789ae9ffa6f789406fc152603953c999954[m
+Author: Electro-kerubin <rbcirano.90@gmail.com>
+Date:   Wed Apr 12 11:58:15 2023 -0400
+
+    Arreglos en buscar libro y agregado de seccion libro
+
+[33mcommit ecfa9a8652374be5710e531784e3b2b21ae08061[m
+Author: Electro-kerubin <rbcirano.90@gmail.com>
+Date:   Mon Mar 27 18:30:41 2023 -0300
+
+    paginador y buscar libros
+
+[33mcommit 9349b0b2af3924665be483674754cda1e76f3d02[m
+Author: Electro-Kerubin <rbcirano.90@gmail.com>
+Date:   Thu Mar 23 10:16:35 2023 -0300
+
+    algunos arreglos
+
+[33mcommit 00b47391915bd28b97936e8d8b68b127d0811a0b[m
+Author: Electro-kerubin <rbcirano.90@gmail.com>
+Date:   Fri Mar 17 15:58:29 2023 -0300
+
+    primer commit
+
+[33mcommit 8968948f040feec01c29b74a4b26056285165de4[m
+Author: Electro-kerubin <rbcirano.90@gmail.com>
+Date:   Fri Mar 17 15:58:08 2023 -0300
+
+    first commit
