@@ -1,7 +1,7 @@
 export const Paginador: React.FC<{
     paginaActual: number,
     totalPaginas: number,
-    pagina: any
+    paginador: any
 }> = (props) => {
 
     // Mejorar paginador
@@ -45,7 +45,7 @@ export const Paginador: React.FC<{
                     </button>
                 </li> */}
                 {numeroPagina.map(number => (
-                    <li key={number} onClick={() => props.pagina(number)} className={'page-item' + (props.paginaActual === number ? 'active' : '')}>
+                    <li key={number} onClick={() => props.paginador(number)} className={'page-item' + (props.paginaActual === number ? 'active' : '')}>
                         <button className="page-link">
                             {number}
                         </button>
