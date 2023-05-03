@@ -52,7 +52,7 @@ background-color: #000000 ;
     height: 384px;
 }
 
-.inactiveLink {
+.desactivar-button {
     pointer-events: none;
     cursor: default;
  }
