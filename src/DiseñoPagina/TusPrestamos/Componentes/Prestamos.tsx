@@ -85,6 +85,7 @@ export const Prestamos = () => {
             throw new Error("Error en el request retornarLibro");
         }
 
+        // trigger para volver a ejecutar el fetch
         setRenderPaginas(!renderPaginas);
     }
 
@@ -104,6 +105,7 @@ export const Prestamos = () => {
             throw new Error('Error en el request de la funcion renovarPrestamo')
         }
 
+        // trigger para volver a ejecutar el fetch
         setRenderPaginas(!renderPaginas);
 
     }
