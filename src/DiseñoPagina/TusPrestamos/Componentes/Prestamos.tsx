@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import PrestamosActualesUsuario from "../../../Modelos/PrestamosActualesUsuario";
 import { SpinnerLoading } from "../../Utilidad/SpinnerLoading";
 import { Link } from "react-router-dom";
+import { render } from "@testing-library/react";
 
 export const Prestamos = () => {
 
@@ -13,6 +14,8 @@ export const Prestamos = () => {
     const [prestamosActualesUsuario, setPrestamosActualesUsuario] = useState<PrestamosActualesUsuario[]>([]);
     const [prestamosActualesUsuarioCargados, setPrestamosActualesUsuarioCargados] = useState(true);
 
+    //Renderiza la pagina una vez que se realizen las acciones de los opciones de prestamo
+    const [renderPaginas, setRenderPaginas] = useState(false);
 
     // Busca los prestamos presentes o actuales que tiene el usuario
     useEffect(() => {
@@ -47,7 +50,7 @@ export const Prestamos = () => {
         })
 
         window.scrollTo(0, 0);
-    }, [authState]);
+    }, [authState, renderPaginas]);
 
     // Spinner
     if (prestamosActualesUsuarioCargados) {
@@ -66,8 +69,27 @@ export const Prestamos = () => {
         );
     }
 
+    async function retornarLibro(libroId: number) {
+        const urlApi = `http://localhost:8080/api/libroes/confidencial/retorna/libro/?libroId=${libroId}`;
+        const peticion = {
+            method: 'PUT',
+            headers: {
+                Authorization: `Bearer ${authState?.accessToken?.accessToken}`,
+                "Content-Type": "application/json",
+            }
+        };
+
+        const retornarLibroResponse = await fetch(urlApi, peticion);
+
+        if (!retornarLibroResponse.ok) {
+            throw new Error("Error en el request retornarLibro");
+        }
+
+        setRenderPaginas(!renderPaginas);
+    }
+
     async function renovarPrestamo(libroId: number) {
-        const urlApi = `http://localhost:8080/api/libroes/confidencial/renovar/prestamo?libroId=${libroId}`;
+        const urlApi = `http://localhost:8080/api/libroes/confidencial/renovar/prestamo/?libroId=${libroId}`;
         const peticion = {
             method: 'PUT',
             headers: {
@@ -82,7 +104,8 @@ export const Prestamos = () => {
             throw new Error('Error en el request de la funcion renovarPrestamo')
         }
 
-        console.log('Funciona')
+        setRenderPaginas(!renderPaginas);
+
     }
 
     return (
@@ -202,8 +225,15 @@ export const Prestamos = () => {
 
                                                         <div className='list-group mt-3'>
 
-                                                            <button onClick={() => renovarPrestamo(prestamo.libro.id)} 
-                                                                className={prestamo.diasAlquilerRestantes < 0 ? 'list-group-item list-group-item-action desactivar-button' : 'list-group-item list-group-item-action btn'}>
+                                                            <button onClick={() => retornarLibro(prestamo.libro.id)}
+                                                                className='list-group-item list-group-item-action btn'
+                                                                data-bs-dismiss='modal'>
+                                                                {prestamo.diasAlquilerRestantes < 0 ? 'Retornar Libro' : 'Retornar Libro'}
+                                                            </button>
+
+                                                            <button onClick={() => renovarPrestamo(prestamo.libro.id)}
+                                                                className={prestamo.diasAlquilerRestantes < 0 ? 'list-group-item list-group-item-action desactivar-button' : 'list-group-item list-group-item-action btn'}
+                                                                data-bs-dismiss='modal'>
                                                                 {prestamo.diasAlquilerRestantes < 0 ? 'No puedes renovar el prestamo' : 'Renovar prestamo'}
                                                             </button>
 
@@ -351,7 +381,15 @@ export const Prestamos = () => {
 
                                                         <div className='list-group mt-3'>
 
-                                                            <button data-bs-dismiss='modal' className={prestamo.diasAlquilerRestantes < 0 ? 'list-group-item list-group-item-action desactivar-button' : 'list-group-item list-group-item-action btn'}>
+                                                            <button onClick={() => retornarLibro(prestamo.libro.id)}
+                                                                className='list-group-item list-group-item-action btn'
+                                                                data-bs-dismiss='modal'>
+                                                                {prestamo.diasAlquilerRestantes < 0 ? 'Retornar Libro' : 'Retornar Libro'}
+                                                            </button>
+
+                                                            <button onClick={() => renovarPrestamo(prestamo.libro.id)}
+                                                                className={prestamo.diasAlquilerRestantes < 0 ? 'list-group-item list-group-item-action desactivar-button' : 'list-group-item list-group-item-action btn'}
+                                                                data-bs-dismiss='modal'>
                                                                 {prestamo.diasAlquilerRestantes < 0 ? 'No puedes renovar el prestamo' : 'Renovar prestamo'}
                                                             </button>
 
