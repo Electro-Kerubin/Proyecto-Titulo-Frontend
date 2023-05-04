@@ -138,59 +138,69 @@ export const Prestamos = () => {
                                         <div className="modal-content">
                                             <div className="modal-header">
                                                 <h5 className="modal-title" id='staticBackdropLabel'>Tus Prestamos</h5>
-                                                <button type="button" className="btn" data-bs-dismiss='modal' aria-label='Close'></button>
+                                                <button type="button" className="btn" data-bs-dismiss='modal' aria-label='Close'>
+                                                    <span aria-hidden="true">X</span>
+                                                </button>
                                             </div>
-                                        </div>
 
-                                        {/* Body */}
-                                        <div className="modal-body">
-                                            <div className="container">
-                                                <div className="mt-3">
-                                                    <div className="row">
-                                                        <div className="col-2">
-                                                            {prestamo.libro?.img ?
-                                                                <img src={prestamo.libro.img} width='56' height='87' alt='libro' />
-                                                                :
-                                                                <img src={require('./../../../ImagenesWeb/Libros/rubius.jpg')} width='56' height='87' alt='libro' />
-                                                            }
+
+                                            {/* Body */}
+
+                                            <div className='modal-body'>
+                                                <div className='container'>
+                                                    <div className='mt-3'>
+                                                        <div className='row'>
+
+                                                            <div className="col-2">
+                                                                {prestamo.libro?.img ?
+                                                                    <img src={prestamo.libro.img} width='56' height='87' alt='libro' />
+                                                                    :
+                                                                    <img src={require('./../../../ImagenesWeb/Libros/rubius.jpg')} width='56' height='87' alt='libro' />
+                                                                }
+                                                            </div>
+                                                            <div className="col-10">
+                                                                <h6>{prestamo.libro.titulo}</h6>
+                                                                <h4>{prestamo.libro.descripcion}</h4>
+                                                            </div>
+
                                                         </div>
-                                                        <div className="col-10">
-                                                            <h6>{prestamo.libro.titulo}</h6>
-                                                            <h4>{prestamo.libro.descripcion}</h4>
+                                                        <hr />
+
+                                                        {prestamo.diasAlquilerRestantes > 0 &&
+                                                            <p>
+                                                                El alquiler del libro expira en {prestamo.diasAlquilerRestantes} dias.
+                                                            </p>
+                                                        }
+
+                                                        {prestamo.diasAlquilerRestantes === 0 &&
+                                                            <p>
+                                                                El alquiler del libro expira hoy!
+                                                            </p>
+                                                        }
+
+                                                        {prestamo.diasAlquilerRestantes < 0 &&
+                                                            <p>
+                                                                Tienes un retraso de {prestamo.diasAlquilerRestantes} dias.
+                                                            </p>
+                                                        }
+
+                                                        <div className='list-group mt-3'>
+
+                                                            <button data-bs-dismiss='modal' className={prestamo.diasAlquilerRestantes < 0 ? 'desactivar-button' : ''}>
+                                                                {prestamo.diasAlquilerRestantes < 0 ? 'No puedes renovar el prestamo' : 'Renovar prestamo'}
+                                                            </button>
+
                                                         </div>
-                                                    </div>
-                                                    <hr />
-                                                    {prestamo.diasAlquilerRestantes > 0 &&
-                                                        <p>
-                                                            El alquiler del libro expira en {prestamo.diasAlquilerRestantes} dias.
-                                                        </p>
-                                                    }
-
-                                                    {prestamo.diasAlquilerRestantes === 0 &&
-                                                        <p>
-                                                            El alquiler del libro expira hoy!
-                                                        </p>
-                                                    }
-
-                                                    {prestamo.diasAlquilerRestantes < 0 &&
-                                                        <p>
-                                                            Tienes un retraso de {prestamo.diasAlquilerRestantes} dias.
-                                                        </p>
-                                                    }
-                                                    <div className="list-group mt-3">
-
-                                                        <button data-bs-dismiss='modal' className={prestamo.diasAlquilerRestantes < 0 ? 'desactivar-button' : ''}>
-                                                            {prestamo.diasAlquilerRestantes < 0 ? 'No puedes renovar el prestamo' : 'Renovar prestamo'}
-                                                        </button>
-
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        {/* Footer */}
-                                        <div className="modal-footer">
-                                            <button type="button" className="btn btn-secondary" data-dismiss='modal'>Cerrar</button>
+
+
+                                            {/* Footer */}
+                                            <div className="modal-footer">
+                                                <button type="button" className="btn btn-secondary" data-dismiss='modal'>Cerrar</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
