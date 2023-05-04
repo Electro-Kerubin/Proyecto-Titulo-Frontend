@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import PrestamosActualesUsuario from "../../../Modelos/PrestamosActualesUsuario";
 import { SpinnerLoading } from "../../Utilidad/SpinnerLoading";
 import { Link } from "react-router-dom";
-import { OpcionesModal } from "./OpcionesModal";
 
 export const Prestamos = () => {
 
@@ -67,6 +66,25 @@ export const Prestamos = () => {
         );
     }
 
+    async function renovarPrestamo(libroId: number) {
+        const urlApi = `http://localhost:8080/api/libroes/confidencial/renovar/prestamo?libroId=${libroId}`;
+        const peticion = {
+            method: 'PUT',
+            headers: {
+                Authorization: `Bearer ${authState?.accessToken?.accessToken}`,
+                "Content-Type": "application/json",
+            }
+        };
+
+        const renovarResponse = await fetch(urlApi, peticion);
+
+        if (!renovarResponse.ok) {
+            throw new Error('Error en el request de la funcion renovarPrestamo')
+        }
+
+        console.log('Funciona')
+    }
+
     return (
         <div>
             {/* Escritorio d-none d-lg-block mt-2 */}
@@ -128,9 +146,7 @@ export const Prestamos = () => {
                                 </div>
                                 <hr />
                                 {/* Modal */}
-                                {/* <div className="modal fade" role="dialog" id={`modal${prestamo.libro.id}`} data-bs-backdrop='static'
-                                    data-bs-keyboard='false' aria-labelledby={`labelid${prestamo.libro.id}`} aria-hidden='true'
-                                    key={prestamo.libro.id}> */}
+
                                 <div className='modal fade' id={`modal${prestamo.libro.id}`} data-bs-backdrop='static' data-bs-keyboard='false'
                                     aria-labelledby='staticBackdropLabel' aria-hidden='true' key={prestamo.libro.id}>
                                     <div className="modal-dialog">
@@ -186,7 +202,8 @@ export const Prestamos = () => {
 
                                                         <div className='list-group mt-3'>
 
-                                                            <button data-bs-dismiss='modal' className={prestamo.diasAlquilerRestantes < 0 ? 'desactivar-button' : ''}>
+                                                            <button onClick={() => renovarPrestamo(prestamo.libro.id)} 
+                                                                className={prestamo.diasAlquilerRestantes < 0 ? 'list-group-item list-group-item-action desactivar-button' : 'list-group-item list-group-item-action btn'}>
                                                                 {prestamo.diasAlquilerRestantes < 0 ? 'No puedes renovar el prestamo' : 'Renovar prestamo'}
                                                             </button>
 
@@ -199,13 +216,11 @@ export const Prestamos = () => {
 
                                             {/* Footer */}
                                             <div className="modal-footer">
-                                                <button type="button" className="btn btn-secondary" data-dismiss='modal'>Cerrar</button>
+                                                <button type="button" className="btn btn-secondary" data-bs-dismiss='modal'>Cerrar</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-                                <OpcionesModal prestamosActualesUsuario={prestamo} mobile={false} />
                             </div>
                         ))}
                     </>
@@ -264,7 +279,7 @@ export const Prestamos = () => {
                                             <div className="list-group mt-3">
                                                 <button className="list-group-item list-group-item-action" aria-current='true'
                                                     data-bs-toggle='modal' data-bs-target={`#mobilemodal${prestamo.libro.id}`}>
-                                                    Retornar Libro
+                                                    Opciones
                                                 </button>
                                                 <Link to={'buscar'} className="list-group-item list-group-item-action">
                                                     Ver mas libros
@@ -276,6 +291,82 @@ export const Prestamos = () => {
                                         <Link className="btn btn-primary" to={`/info/${prestamo.libro.id}`}>
                                             Ir al libro
                                         </Link>
+                                    </div>
+                                </div>
+                                <hr />
+                                {/* Modal */}
+
+                                <div className='modal fade' id={`mobilemodal${prestamo.libro.id}`} data-bs-backdrop='static' data-bs-keyboard='false'
+                                    aria-labelledby='staticBackdropLabel' aria-hidden='true' key={prestamo.libro.id}>
+                                    <div className="modal-dialog">
+                                        {/* Content */}
+                                        <div className="modal-content">
+                                            <div className="modal-header">
+                                                <h5 className="modal-title" id='staticBackdropLabel'>Tus Prestamos</h5>
+                                                <button type="button" className="btn" data-bs-dismiss='modal' aria-label='Close'>
+                                                    <span aria-hidden="true">X</span>
+                                                </button>
+                                            </div>
+
+
+                                            {/* Body */}
+
+                                            <div className='modal-body'>
+                                                <div className='container'>
+                                                    <div className='mt-3'>
+                                                        <div className='row'>
+
+                                                            <div className="col-2">
+                                                                {prestamo.libro?.img ?
+                                                                    <img src={prestamo.libro.img} width='56' height='87' alt='libro' />
+                                                                    :
+                                                                    <img src={require('./../../../ImagenesWeb/Libros/rubius.jpg')} width='56' height='87' alt='libro' />
+                                                                }
+                                                            </div>
+                                                            <div className="col-10">
+                                                                <h6>{prestamo.libro.titulo}</h6>
+                                                                <h4>{prestamo.libro.descripcion}</h4>
+                                                            </div>
+
+                                                        </div>
+                                                        <hr />
+
+                                                        {prestamo.diasAlquilerRestantes > 0 &&
+                                                            <p>
+                                                                El alquiler del libro expira en {prestamo.diasAlquilerRestantes} dias.
+                                                            </p>
+                                                        }
+
+                                                        {prestamo.diasAlquilerRestantes === 0 &&
+                                                            <p>
+                                                                El alquiler del libro expira hoy!
+                                                            </p>
+                                                        }
+
+                                                        {prestamo.diasAlquilerRestantes < 0 &&
+                                                            <p>
+                                                                Tienes un retraso de {prestamo.diasAlquilerRestantes} dias.
+                                                            </p>
+                                                        }
+
+                                                        <div className='list-group mt-3'>
+
+                                                            <button data-bs-dismiss='modal' className={prestamo.diasAlquilerRestantes < 0 ? 'list-group-item list-group-item-action desactivar-button' : 'list-group-item list-group-item-action btn'}>
+                                                                {prestamo.diasAlquilerRestantes < 0 ? 'No puedes renovar el prestamo' : 'Renovar prestamo'}
+                                                            </button>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                            {/* Footer */}
+                                            <div className="modal-footer">
+                                                <button type="button" className="btn btn-secondary" data-bs-dismiss='modal'>Cerrar</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
