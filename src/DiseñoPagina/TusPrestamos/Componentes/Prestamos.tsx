@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import PrestamosActualesUsuario from "../../../Modelos/PrestamosActualesUsuario";
 import { SpinnerLoading } from "../../Utilidad/SpinnerLoading";
 import { Link } from "react-router-dom";
-import { render } from "@testing-library/react";
 
 export const Prestamos = () => {
 
