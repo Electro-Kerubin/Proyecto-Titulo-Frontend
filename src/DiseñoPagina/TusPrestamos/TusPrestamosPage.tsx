@@ -1,15 +1,18 @@
 import { Prestamos } from "./Componentes/Prestamos";
 import { Historial } from "./Componentes/Historial";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const TusPrestamosPage = () => {
+
+    const [historialRender, setHistorialRender] = useState(false);
 
     return (
         <div className="container">
             <div className="mt-3">
                 <nav>
                     <div className="nav nav-tabs" id="nav-tab" role="tablist">
-                        <button className="nav-link active"
+                        <button onClick={() => setHistorialRender(false)} 
+                            className="nav-link active"
                             id="nav-prestamos-id"
                             data-bs-toggle="tab"
                             data-bs-target="#nav-prestamos"
@@ -20,7 +23,8 @@ export const TusPrestamosPage = () => {
                             Tus Prestamos
                         </button>
 
-                        <button className="nav-link"
+                        <button onClick={() => setHistorialRender(true)} 
+                            className="nav-link"
                             id="nav-historial-tab"
                             data-bs-toggle="tab"
                             data-bs-target="#nav-historial"
@@ -44,7 +48,7 @@ export const TusPrestamosPage = () => {
                         id="nav-historial"
                         role="tabpanel"
                         aria-labelledby="nav-historial-tab">
-                        <Historial />
+                        {historialRender ? <Historial /> : <></>}
                     </div>
                 </div>
 

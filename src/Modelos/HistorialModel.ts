@@ -1,7 +1,7 @@
 class HistorialModel {
     id: number;
     usuarioEmail: string;
-    fechaAlquiler: string;
+    fechaPrestamo: string;
     fechaRetorno: string;
     titulo: string;
     autor: string;
@@ -10,7 +10,7 @@ class HistorialModel {
 
     constructor(id: number,
         usuarioEmail: string,
-        fechaAlquiler: string,
+        fechaPrestamo: string,
         fechaRetorno: string,
         titulo: string,
         autor: string,
@@ -18,7 +18,7 @@ class HistorialModel {
         img: string) {
         this.id = id;
         this.usuarioEmail = usuarioEmail;
-        this.fechaAlquiler = fechaAlquiler;
+        this.fechaPrestamo = fechaPrestamo;
         this.fechaRetorno = fechaRetorno;
         this.titulo = titulo;
         this.autor = autor;
