@@ -1,8 +1,12 @@
 import { useState } from "react";
+import { EnviarNuevoMensaje } from "./components/EnviarNuevoMensaje";
+import { Mensajes } from "./components/Mensajes";
 
 export const MensajesPagina = () => {
 
     const [mensajeClick, setMensajeClick] = useState(false);
+
+    window.scrollTo(0,0);
 
     return (
         <div className="container">
@@ -25,14 +29,15 @@ export const MensajesPagina = () => {
                 <div className="tab-content" id="nav-content">
                     <div className="tab-pane fade show active" id="nav-enviar-mensaje" role="tabpanel"
                         aria-labelledby="nav-enviar-mensaje-tab">
-                        <p>Postear nuevo mensaje</p>
+                        <EnviarNuevoMensaje />
                     </div>
                     <div className="tab-pane fade" id="nav-respuesta-mensaje" role="tabpanel"
                         aria-labelledby="nav-respuesta-mensaje-tab">
                         {mensajeClick ?
-                            <p>Mensajes</p>
+                            <Mensajes />
                             :
-                            <></>}
+                            <></>
+                        }
                     </div>
                 </div>
             </div>

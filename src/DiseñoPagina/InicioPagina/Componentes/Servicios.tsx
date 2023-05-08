@@ -16,7 +16,7 @@ export const Servicios = () => {
                     </p>
                     <div className="d-grid gap-2 justify-content-md-start mb-4 mb-lg-3">
                         {authState?.isAuthenticated ?
-                            <Link to='#' className="btn main-color text-white btn-lg" >Preguntas al Admin</Link>
+                            <Link to='/mensajes' className="btn main-color text-white btn-lg" >Preguntas al Admin</Link>
                             :
                             <Link className="btn main-color text-white btn-lg" to='/login'>Ingresar</Link>
                         }
