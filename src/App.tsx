@@ -13,6 +13,7 @@ import LoginWidget from './Auth/LoginWidget';
 import { ListaResenaPage } from './DiseñoPagina/ListaResenas/ListaResenaPage';
 import { TusPrestamosPage } from './DiseñoPagina/TusPrestamos/TusPrestamosPage';
 import { MensajesPagina } from './DiseñoPagina/MensajesPagina/MensajesPagina';
+import { AdministrarLibreriaPagina } from './DiseñoPagina/AdministrarLibreriaPagina/AdministrarLibreriaPagina';
 
 const oktaAuth = new OktaAuth(oktaConfig);
 
@@ -57,6 +58,10 @@ export const App = () => {
             </SecureRoute>
             <SecureRoute path='/mensajes'>
               <MensajesPagina />
+            </SecureRoute>
+
+            <SecureRoute path='/administracion'>
+              <AdministrarLibreriaPagina />
             </SecureRoute>
           </Switch>
         </div>

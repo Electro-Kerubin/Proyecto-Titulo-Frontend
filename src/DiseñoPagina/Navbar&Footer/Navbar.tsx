@@ -46,6 +46,13 @@ export const Navbar = () => {
                                 </li>
                             }
                         </li>
+                        <li>
+                            {authState.isAuthenticated &&
+                                <li className="nav-item">
+                                    <NavLink className='nav-link' to='/administracion'>Administrar Libreria</NavLink>
+                                </li>
+                            }
+                        </li>
                     </ul>
                     <ul className='navbar-nav ms-auto'>
                         {!authState.isAuthenticated ?
@@ -57,7 +64,6 @@ export const Navbar = () => {
                                 <button className="btn btn-outline-light" onClick={handleLogout}>Cerrar Sesión</button>
                             </li>
                         }
-
                     </ul>
                 </div>
             </div>
