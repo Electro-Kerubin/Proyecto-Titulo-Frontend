@@ -8,6 +8,7 @@ export const MensajesAdmin = () => {
     const { authState } = useOktaAuth();
 
     const [mensajes, setMensajes] = useState<MensajesModelo[]>([]);
+    const [mensajesPorPagina, setMensajesPorPagina] = useState(5);
     const [mensajesCargados, setMensajesCargados] = useState(true);
     
     const [httpError, setHttpError] = useState(null);
@@ -20,8 +21,27 @@ export const MensajesAdmin = () => {
 
         const fetchRetornaMensajes = async () => {
             if (authState && authState.isAuthenticated) {
-                const apiUrl = `http://localhost:8080/api/mensajeses/search/`;
+                const apiUrl = `http://localhost:8080/api/mensajeses/search/findByCerrado/?cerrado=false&page=${paginaActual - 1}$size=${mensajesPorPagina}`;
+                const peticion = {
+                    method: 'GET',
+                    headers: {
+                        Authorization: `Bearer ${authState.accessToken?.accessToken}`,
+                        'Content-Type': 'application/json'
+                    }
+                };
+
+                const fetchRetornaMensajesResponse = await fetch(apiUrl, peticion);
+                if (!fetchRetornaMensajesResponse.ok) {
+                    throw new Error('Problemas en fetchRetornaMensajesResponse');
+                }
+
+                const fetchRetornaMensajesResponseJson = await fetchRetornaMensajesResponse.json();
+
+                setMensajes(fetchRetornaMensajesResponseJson._embedded.mensajeses);
+                setPaginasTotal(fetchRetornaMensajesResponseJson.page.totalPages);
             }
+
+            setMensajesCargados(false);
         }
         fetchRetornaMensajes().catch((error: any) => {
             setMensajesCargados(false);
@@ -49,6 +69,19 @@ export const MensajesAdmin = () => {
     const paginador = (numPag: number) => setPaginaActual(numPag);
 
     return (
-        <div></div>
+        <div className="mt-3">
+            {mensajes.length > 0 ?
+                <>
+                    <h5>Preguntas:</h5>
+                    {mensajes.map(mensaje => (
+                        <p>asd</p>
+                    ))}
+
+                    
+                </>
+                :
+                <h5>No hay preguntas pendientes.</h5>
+            }
+        </div>
     );
 }

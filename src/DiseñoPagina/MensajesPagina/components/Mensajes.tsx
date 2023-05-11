@@ -30,7 +30,7 @@ export const Mensajes = () => {
                         'Content-type': 'application/json'
                     }
                 };
-
+                
                 const fetchMensajesResponse = await fetch(apiUrl, peticion);
 
                 if (!fetchMensajesResponse.ok) {
