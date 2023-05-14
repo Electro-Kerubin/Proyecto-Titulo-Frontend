@@ -2,6 +2,7 @@ import { useOktaAuth } from "@okta/okta-react";
 import { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { MensajesAdmin } from "./components/MensajesAdmin";
+import { AnadirLibro } from "./components/AnadirLibro";
 
 export const AdministrarLibreriaPagina = () => {
 
@@ -57,7 +58,7 @@ export const AdministrarLibreriaPagina = () => {
                 <div className="tab-content" id="nav-content">
                     <div className="tab-pane fade show active" id="nav-añadir-libro" role="tabpanel"
                         aria-labelledby="nav-añadir-libro-tab">
-                        Añadir Nuevo Libro
+                        <AnadirLibro />
                     </div>
                     <div className="tab-pane fade show" id="nav-actualizar-libro" role="tabpanel"
                         aria-labelledby="nav-actualizar-libro-tab">

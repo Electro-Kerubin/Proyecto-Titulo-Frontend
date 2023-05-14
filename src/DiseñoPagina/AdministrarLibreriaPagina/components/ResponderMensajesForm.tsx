@@ -44,25 +44,25 @@ export const ResponderMensajesForm: React.FC<{
                                 onClick={enviarRespuestaButton}>
                                 Enviar Respuesta
                             </button>
-                        </div>
-                    </form>
-                    {/* Modal */}
-                    {/* <div className="modal fade" id="targetModal" tabIndex={-1} role="dialog"
-                        aria-labelledby="targetModalLabel" aria-hidden="true">
-                        <div className="modal-dialog" role="document">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <div className="modal-title" id="targetModalLabel">¡Respuesta enviada con Exito!</div>
-                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div className="modal-body">
-                                    <h4>¡Respuesta enviada con Exito!</h4>
+
+                            <div className="modal fade" id="targetModal" tabIndex={-1} role="dialog"
+                                aria-labelledby="targetModalLabel" aria-hidden="true">
+                                <div className="modal-dialog" role="document">
+                                    <div className="modal-content">
+                                        <div className="modal-header">
+                                            <div className="modal-title" id="targetModalLabel">¡Respuesta enviada con Exito!</div>
+                                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div className="modal-body">
+                                            <h4>¡Respuesta enviada con Exito!</h4>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div> */}
+                    </form>
                 </div>
             </div>
         </div>
