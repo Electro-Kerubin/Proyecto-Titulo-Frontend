@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { MensajesAdmin } from "./components/MensajesAdmin";
 import { AnadirLibro } from "./components/AnadirLibro";
+import { ActualizarLibros } from "./components/ActualizarLibros";
 
 export const AdministrarLibreriaPagina = () => {
 
@@ -63,7 +64,7 @@ export const AdministrarLibreriaPagina = () => {
                     <div className="tab-pane fade show" id="nav-actualizar-libro" role="tabpanel"
                         aria-labelledby="nav-actualizar-libro-tab">
                         {cambiarCantidadDeLibroClick ?
-                            <>Cambiar Cantidad de libros</>
+                            <><ActualizarLibros /></>
                             :
                             <></>
                         }
