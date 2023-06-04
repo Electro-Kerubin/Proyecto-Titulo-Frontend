@@ -17,7 +17,7 @@ export const Navbar = () => {
     return (
         <nav className='navbar navbar-expand-lg navbar-dark main-color py-3'>
             <div className='container-fluid'>
-                <NavLink className='navbar-brand' to="/">Juegos de Mesa Nerfilin</NavLink>
+                <NavLink className='navbar-brand' to="/">Libreria ViñaLibros</NavLink>
                 <button className='navbar-toggler' type='button' data-bs-toggle='collapse'
                     data-bs-target='#navbarNavDespliege'
                     aria-controls='navbarNavDespliege' aria-expended='false' aria-label='Toggle Navigation' >
@@ -47,10 +47,12 @@ export const Navbar = () => {
                             }
                         </li>
                         <li>
-                            {authState.isAuthenticated &&
+                            {authState.isAuthenticated && authState.accessToken?.claims.usuarioRol == "admin" ?
                                 <li className="nav-item">
                                     <NavLink className='nav-link' to='/administracion'>Administrar Libreria</NavLink>
                                 </li>
+                                :
+                                <></>
                             }
                         </li>
                     </ul>

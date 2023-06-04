@@ -71,10 +71,10 @@ export const Carousel = () => {
     return (
         <div className="container mt-5" style={{ height: 550 }}>
             <div className="inicio-carousel">
-                <h3>Titulo agregar</h3>
+                <h3>Nuestros libros de la colección</h3>
             </div>
             <div id="carousel-control" className="carousel slide carousel-dark slide mt-5 d-none d-lg-block"
-                data-bs-interval="false" data-bs-ride="carousel">
+                data-bs-interval="3000" data-bs-ride="carousel">
                 {/**Escritorio */}
                 <div className="carousel-inner">
                     <div className="carousel-item active">

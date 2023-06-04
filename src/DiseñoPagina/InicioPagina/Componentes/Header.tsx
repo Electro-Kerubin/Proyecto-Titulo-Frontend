@@ -6,8 +6,8 @@ export const Header = () => {
             <div className="container-fluid py-5 text-white d-flex justify-content-center">
                 <div>
                     <h1 className="display-5 fw-bold">Nuevas aventuras esperan por ti!</h1>
-                    <p className="col-md-8 fs-4">Encuentra los ultimos juegos de mesa.</p>
-                    <Link type="button" className="btn secundary-color btn-lg text" to="/buscar">Descubre los mejores juegos aqui!</Link>
+                    <p className="col-md-8 fs-4">Este es el lugar de tus libros favoritos.</p>
+                    <Link type="button" className="btn text button-inicio button-arounder " to="/buscar">Busca tus libros aqui!</Link>
                 </div>
             </div>
         </div>
