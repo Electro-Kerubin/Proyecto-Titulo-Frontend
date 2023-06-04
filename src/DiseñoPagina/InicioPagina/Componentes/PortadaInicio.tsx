@@ -1,17 +1,21 @@
 import { useOktaAuth } from "@okta/okta-react";
 import { Link } from "react-router-dom";
+import Mapa from "../../../Geolocalizacion/Mapa";
 
 export const PortadaInicio = () => {
 
     const { authState } = useOktaAuth();
-
 
     return (
         <div>
             <div className="d-none d-lg-block">
                 <div className="row g-0 mt-5">
                     <div className="col-sm-6 col-md-6">
-                        <div className="col-image-left"></div>
+                        <div className="col-image-left">
+                            <div className="map-container">
+                                <Mapa />
+                            </div>
+                        </div>
                     </div>
                     {/** col-4 col-md-4 container d-flex justify-content-center align-items-center */}
                     <div className="col-4 col-md-4 container d-flex justify-content-center align-items-center">
@@ -47,7 +51,9 @@ export const PortadaInicio = () => {
             <div className="d-lg-none">
                 <div className="container">
                     <div className="m-2">
-                        <div className="col-image-left"></div>
+                        <div className="map-container">
+                            <Mapa />
+                        </div>
                         <div className="mt-2">
                             <h1>¿Que has estado leyendo?</h1>
                             <p className="lead">
