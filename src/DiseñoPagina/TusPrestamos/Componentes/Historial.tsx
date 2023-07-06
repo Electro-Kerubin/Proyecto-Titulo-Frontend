@@ -108,6 +108,7 @@ export const Historial = () => {
                                             <hr />
                                             <p className="card-text">Fecha de alquiler: {historiaPrestamo.fechaPrestamo}</p>
                                             <p className="card-text">Fecha de retorno: {historiaPrestamo.fechaRetorno}</p>
+
                                         </div>
                                     </div>
                                 </div>

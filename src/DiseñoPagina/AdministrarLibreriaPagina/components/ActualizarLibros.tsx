@@ -96,7 +96,7 @@ export const ActualizarLibros = () => {
                     ))}
                 </>
                 :
-                <h5>Debe añadir libros primer a la colección</h5>
+                <h5>Debe añadir libros primero a la colección</h5>
             }
             {totalPaginas > 1 && <Paginador paginaActual={paginaActual} totalPaginas={totalPaginas} paginador={paginador}  />}
         </div>

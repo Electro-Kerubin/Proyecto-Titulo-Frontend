@@ -4,12 +4,14 @@ import { Redirect } from "react-router-dom";
 import { MensajesAdmin } from "./components/MensajesAdmin";
 import { AnadirLibro } from "./components/AnadirLibro";
 import { ActualizarLibros } from "./components/ActualizarLibros";
+import { ConfirmarPrestamos } from "./components/ConfirmarPrestamo";
 
 export const AdministrarLibreriaPagina = () => {
 
     const { authState } = useOktaAuth();
 
     const [cambiarCantidadDeLibroClick, setCambiarCantidadDeLibroClick] = useState(false);
+    const [updateConfimarPrestamoClick, setUpdateConfimarPrestamoClick] = useState(false);
 
     const [mensajesClick, setMensajesClick] = useState(false);
 
@@ -28,8 +30,14 @@ export const AdministrarLibreriaPagina = () => {
         setMensajesClick(true)
     }
 
+    function confirmarPrestamoClick() {
+        setUpdateConfimarPrestamoClick(true);
+        setMensajesClick(false);
+    }
+
+    // Si el usuarioRol no esta definido se devuelve al home page
     if (authState?.accessToken?.claims.usuarioRol === undefined) {
-        return <Redirect to='/home'/>
+        return <Redirect to='/home' />
     }
 
     return (
@@ -54,6 +62,11 @@ export const AdministrarLibreriaPagina = () => {
                             type="button" role="tab" aria-controls="nav-enviar-mensaje" aria-selected='true'>
                             Responder Mensajes
                         </button>
+                        <button onClick={confirmarPrestamoClick} className="nav-link"
+                            id='confirmar-prestamo-tab' data-bs-toggle='tab' data-bs-target='#confirmar-prestamo'
+                            type="button" role="tab" aria-controls="confirmar-prestamo" aria-selected='true'>
+                            Confirmar Prestamos
+                        </button>
                     </div>
                 </nav>
                 <div className="tab-content" id="nav-content">
@@ -73,6 +86,14 @@ export const AdministrarLibreriaPagina = () => {
                         aria-labelledby="nav-enviar-mensaje-tab">
                         {mensajesClick ?
                             <><MensajesAdmin /></>
+                            :
+                            <></>
+                        }
+                    </div>
+                    <div className="tab-pane fade show" id="confirmar-prestamo" role="tabpanel"
+                        aria-labelledby="confirmar-prestamo-tab">
+                        {updateConfimarPrestamoClick ?
+                            <><ConfirmarPrestamos /></>
                             :
                             <></>
                         }

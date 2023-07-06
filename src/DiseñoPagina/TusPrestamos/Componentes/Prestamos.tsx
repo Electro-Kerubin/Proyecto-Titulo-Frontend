@@ -131,7 +131,6 @@ export const Prestamos = () => {
                                         <div className="card-body">
                                             <div className="mt-3">
                                                 <h4>Opciones</h4>
-
                                                 {prestamo.diasAlquilerRestantes > 0 &&
                                                     <p>
                                                         El alquiler del libro expira en {prestamo.diasAlquilerRestantes} dias.

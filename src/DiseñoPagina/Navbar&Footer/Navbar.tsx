@@ -17,7 +17,7 @@ export const Navbar = () => {
     return (
         <nav className='navbar navbar-expand-lg navbar-dark main-color py-3'>
             <div className='container-fluid'>
-                <NavLink className='navbar-brand' to="/">Libreria ViñaLibros</NavLink>
+                <NavLink className='navbar-brand' to="/">Biblioteca LibrosViña</NavLink>
                 <button className='navbar-toggler' type='button' data-bs-toggle='collapse'
                     data-bs-target='#navbarNavDespliege'
                     aria-controls='navbarNavDespliege' aria-expended='false' aria-label='Toggle Navigation' >
