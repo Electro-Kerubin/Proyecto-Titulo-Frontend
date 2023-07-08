@@ -8,6 +8,9 @@ export const ActualizarOpciones: React.FC<{ libro: LibroModelo, borrarLibro: any
     const [cantidad, setCantidad] = useState<number>(0);
     const [restante, setRestante] = useState<number>(0);
 
+    //Booleanos para activar las alertas
+
+
     useEffect(() => {
         const librosDisponibles = () => {
             props.libro.copias ? setCantidad(props.libro.copias) : setCantidad(0);

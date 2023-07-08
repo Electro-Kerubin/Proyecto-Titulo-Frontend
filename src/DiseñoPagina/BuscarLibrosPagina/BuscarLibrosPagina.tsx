@@ -133,14 +133,16 @@ export const BuscarLibrosPagina = () => {
                                 <input className="form-control m-2" type="search"
                                     placeholder="Buscar Libro" aria-labelledby="Search"
                                     onChange={val => setBuscarLibro(val.target.value)}
+                                    style={{ height: '40px' }}
                                 />
-                                <button className="btn btn-outline-success"
-                                    onClick={() => buscarLibroHandle()}>
+                                <button className="btn btn-outline-success mt-2"
+                                    onClick={() => buscarLibroHandle()}
+                                    style={{ height: '40px' }}>
                                     Buscar
                                 </button>
                             </div>
                         </div>
-                        <div className="col-4">
+                        <div className="col-4 mt-2">
                             <div className="dropdown">
                                 <button className="btn btn-secondary dropdown-toggle" type="button"
                                     id="dropdownCategoriaBoton" data-bs-toggle="dropdown" aria-expanded="false">

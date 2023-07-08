@@ -16,6 +16,9 @@ export const ActualizarLibros = () => {
 
     const [libroBorrado, setLibroBorrado] = useState(false);
 
+    const [formWarning, setFormWarning] = useState(false);
+    const [formSuccess, setFormSuccess] = useState(false);
+
     useEffect(() => {
         const fetchLibros = async () => {
             const apiUrl: string = `http://localhost:8080/api/libroes?page=${paginaActual - 1}&size=${librosPorPagina}`;
@@ -98,7 +101,7 @@ export const ActualizarLibros = () => {
                 :
                 <h5>Debe añadir libros primero a la colección</h5>
             }
-            {totalPaginas > 1 && <Paginador paginaActual={paginaActual} totalPaginas={totalPaginas} paginador={paginador}  />}
+            {totalPaginas > 1 && <Paginador paginaActual={paginaActual} totalPaginas={totalPaginas} paginador={paginador} />}
         </div>
     );
 }

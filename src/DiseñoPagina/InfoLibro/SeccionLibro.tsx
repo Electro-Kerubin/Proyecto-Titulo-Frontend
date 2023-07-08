@@ -35,6 +35,7 @@ export const SeccionLibro = () => {
   // States para seber si el libro esta en prestamo por el usuario o no
   const [libroPrestado, setLibroPrestado] = useState(false);
   const [libroPrestadoCargando, setLibroPrestadoCargando] = useState(true);
+  const [libroEstadoPrestamo, setLibroEstadoPrestamo] = useState(false);
 
   const idLibro = window.location.pathname.split("/")[2];
 
