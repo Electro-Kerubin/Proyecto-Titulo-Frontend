@@ -3,25 +3,21 @@ import { useEffect, useState } from "react";
 import PrestamosActualesUsuario from "../../../Modelos/PrestamosActualesUsuario";
 import { SpinnerLoading } from "../../Utilidad/SpinnerLoading";
 
-export const ConfirmarPrestamos: React.FC<{}> = () => {
+export const RenovarPrestamo: React.FC<{}> = () => {
 
     const { authState } = useOktaAuth();
     const [httpError, setHttpError] = useState(null);
 
-    const [prestamosPorConfimar, setPrestamosPorConfirmar] = useState<PrestamosActualesUsuario[]>([]);
+    const [prestamosPorRenovar, setPrestamosPorRenovar] = useState<PrestamosActualesUsuario[]>([]);
+    const [prestamosPorRenovarCargados, setPrestamosPorRenovarCargados] = useState(true);
 
-    const [prestamosPorConfimarCargados, setPrestamosPorConfirmarCargados] = useState(true);
-    //Renderiza la pagina una vez que se realizen las acciones de los opciones de prestamo
     const [renderPaginas, setRenderPaginas] = useState(false);
 
-    //buscador de prestamos por usuario
     const [buscarUsuario, setBuscarUsuario] = useState('');
-
     const [searchUrl, setSearchUrl] = useState('');
 
-    // Busca los prestamos con estado "Espera"
     useEffect(() => {
-        const fetchBuscarPrestamosEnEspera = async () => {
+        const fetchBuscarPrestamosPorRenovar = async () => {
 
             if (authState && authState.isAuthenticated) {
 
@@ -30,7 +26,7 @@ export const ConfirmarPrestamos: React.FC<{}> = () => {
                 let finalUrl: string = '';
 
                 if (searchUrl == '') {
-                    finalUrl = `${apiUrl}/listaprestamos/confirmar`;
+                    finalUrl = `${apiUrl}/prestamo/renovacion/listar`;
                 } else {
                     finalUrl = `${apiUrl}${searchUrl}`;
                 }
@@ -50,22 +46,22 @@ export const ConfirmarPrestamos: React.FC<{}> = () => {
                 }
 
                 const buscarPrestamosEnEsperaResponseJson = await buscarPrestamosEnEsperaResponse.json();
-                setPrestamosPorConfirmar(buscarPrestamosEnEsperaResponseJson);
+                setPrestamosPorRenovar(buscarPrestamosEnEsperaResponseJson);
             }
 
-            setPrestamosPorConfirmarCargados(false);
+            setPrestamosPorRenovarCargados(false);
         }
-        fetchBuscarPrestamosEnEspera().catch((error: any) => {
-            setPrestamosPorConfirmarCargados(true);
+        fetchBuscarPrestamosPorRenovar().catch((error: any) => {
+            setPrestamosPorRenovarCargados(true);
             setHttpError(error.message);
         })
 
         window.scrollTo(0, 0);
     }, [authState, renderPaginas, searchUrl]);
 
-    async function confirmarPrestamo(idPrestamo: number) {
+    async function confirmarRenovacion(libroId: number, usuarioCorreo: string) {
         if (authState && authState.isAuthenticated) {
-            const apiUrl = `http://localhost:8080/api/admin/confidencial/confirmar/prestamo?prestamoId=${idPrestamo}`;
+            const apiUrl = `http://localhost:8080/api/admin/confidencial/prestamo/renovacion/confirmar?libroId=${libroId}&usuarioCorreo=${usuarioCorreo}`;
             const peticion = {
                 method: "PUT",
                 headers: {
@@ -74,19 +70,19 @@ export const ConfirmarPrestamos: React.FC<{}> = () => {
                 }
             };
 
-            const confirmarPrestamoResponse = await fetch(apiUrl, peticion);
+            const confirmarRenovacionResponse = await fetch(apiUrl, peticion);
 
-            if (!confirmarPrestamoResponse.ok) {
-                throw new Error('ERROR EN FUNCION CONFIRMAR PRESTAMO');
+            if (!confirmarRenovacionResponse.ok) {
+                throw new Error('ERROR EN FUNCION confirmarRenovacion');
             }
             setBuscarUsuario('');
             setRenderPaginas(!renderPaginas);
         }
     }
 
-    async function cancelarPrestamo(idPrestamo: number) {
+    async function cancelarRenovacion(libroId: number, usuarioCorreo: string) {
         if (authState && authState.isAuthenticated) {
-            const apiUrl = `http://localhost:8080/api/admin/confidencial/cancelar/prestamo?prestamoId=${idPrestamo}`;
+            const apiUrl = `http://localhost:8080/api/admin/confidencial/prestamo/renovacion/cancelar?libroId=${libroId}&usuarioCorreo=${usuarioCorreo}`;
             const peticion = {
                 method: "PUT",
                 headers: {
@@ -95,10 +91,10 @@ export const ConfirmarPrestamos: React.FC<{}> = () => {
                 }
             };
 
-            const cancelarPrestamoResponse = await fetch(apiUrl, peticion);
+            const cancelarRenovacionResponse = await fetch(apiUrl, peticion);
 
-            if (!cancelarPrestamoResponse.ok) {
-                throw new Error('ERROR EN FUNCION CONFIRMAR PRESTAMO');
+            if (!cancelarRenovacionResponse.ok) {
+                throw new Error('ERROR EN FUNCION cancelarPrestamo');
             }
 
             setBuscarUsuario('');
@@ -112,12 +108,12 @@ export const ConfirmarPrestamos: React.FC<{}> = () => {
         if (buscarUsuario === '') {
             setSearchUrl('');
         } else {
-            setSearchUrl(`/listaprestamos/buscar?estado=Espera&correoUsuario=${buscarUsuario}`);
+            setSearchUrl(`/listaprestamos/buscar?estado=${"Espera Renovacion"}&correoUsuario=${buscarUsuario}`);
         }
     }
 
     //spinner
-    if (prestamosPorConfimarCargados) {
+    if (prestamosPorRenovarCargados) {
         return (
             <SpinnerLoading />
         );
@@ -144,9 +140,9 @@ export const ConfirmarPrestamos: React.FC<{}> = () => {
 
             {/* Escritorio */}
             <div className="d-none d-lg-block mt-2">
-                {prestamosPorConfimar.length > 0 ?
+                {prestamosPorRenovar.length > 0 ?
                     <>
-                        {prestamosPorConfimar.map(prestamo => (
+                        {prestamosPorRenovar.map(prestamo => (
                             <div key={prestamo.libro.id}>
                                 <div className="row mt-3 mb-3">
                                     <div className="container col-4 col-md-4">
@@ -163,11 +159,28 @@ export const ConfirmarPrestamos: React.FC<{}> = () => {
                                                 <h6>Usuario: {prestamo.correoUsuario}</h6>
                                                 <h6>Titulo: {prestamo.libro.titulo}</h6>
                                                 <p>Autor: {prestamo.libro.autor}</p>
+                                                {prestamo.diasAlquilerRestantes > 0 &&
+                                                    <p>
+                                                        El alquiler del libro expira en {prestamo.diasAlquilerRestantes} dias.
+                                                    </p>
+                                                }
+
+                                                {prestamo.diasAlquilerRestantes === 0 &&
+                                                    <p>
+                                                        El alquiler del libro expira hoy!
+                                                    </p>
+                                                }
+
+                                                {prestamo.diasAlquilerRestantes < 0 &&
+                                                    <p>
+                                                        Tienes un retraso de {prestamo.diasAlquilerRestantes} dias.
+                                                    </p>
+                                                }
                                             </div>
                                             <div className="mt-3">
                                                 <h4>Opciones:</h4>
-                                                <button className="btn btn-md btn-success m-1" onClick={() => confirmarPrestamo(prestamo.idPrestamo)}>Confirmar Prestamo</button>
-                                                <button className="btn btn-md btn-danger m-1" onClick={() => cancelarPrestamo(prestamo.idPrestamo)}>Cancelar Prestamo</button>
+                                                <button className="btn btn-md btn-success m-1" onClick={() => confirmarRenovacion(prestamo.libro.id, prestamo.correoUsuario)}>Renovar</button>
+                                                <button className="btn btn-md btn-danger m-1" onClick={() => cancelarRenovacion(prestamo.libro.id, prestamo.correoUsuario)}>Cancelar Renovación</button>
                                             </div>
                                         </div>
                                     </div>
@@ -181,9 +194,9 @@ export const ConfirmarPrestamos: React.FC<{}> = () => {
 
             {/* Mobile */}
             <div className="container d-lg-none mt-2">
-                {prestamosPorConfimar.length > 0 ?
+                {prestamosPorRenovar.length > 0 ?
                     <>
-                        {prestamosPorConfimar.map(prestamo => (
+                        {prestamosPorRenovar.map(prestamo => (
                             <div key={prestamo.libro.id}>
                                 <div className="row mt-3 mb-3">
                                     <div className="d-flex justify-content-center align-items-center">
@@ -203,8 +216,8 @@ export const ConfirmarPrestamos: React.FC<{}> = () => {
                                             </div>
                                             <div className="mt-3">
                                                 <h4>Opciones:</h4>
-                                                <button className="btn btn-md btn-success m-1" onClick={() => confirmarPrestamo(prestamo.idPrestamo)}>Confirmar Prestamo</button>
-                                                <button className="btn btn-md btn-danger m-1" onClick={() => cancelarPrestamo(prestamo.idPrestamo)}>Cancelar Prestamo</button>
+                                                <button className="btn btn-md btn-success m-1" onClick={() => confirmarRenovacion(prestamo.libro.id, prestamo.correoUsuario)}>Renovar</button>
+                                                <button className="btn btn-md btn-danger m-1" onClick={() => cancelarRenovacion(prestamo.libro.id, prestamo.correoUsuario)}>Cancelar Renovación</button>
                                             </div>
                                         </div>
                                     </div>
@@ -213,11 +226,11 @@ export const ConfirmarPrestamos: React.FC<{}> = () => {
                         ))}
                     </>
                     :
-                    <div></div>}
+                    <div>
+                        <h3>No hay ningun prestamo en situación de renovación.</h3>
+                    </div>}
             </div>
         </div>
-
-
     );
 
 }

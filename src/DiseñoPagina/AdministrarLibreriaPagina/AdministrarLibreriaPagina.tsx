@@ -5,6 +5,7 @@ import { MensajesAdmin } from "./components/MensajesAdmin";
 import { AnadirLibro } from "./components/AnadirLibro";
 import { ActualizarLibros } from "./components/ActualizarLibros";
 import { ConfirmarPrestamos } from "./components/ConfirmarPrestamo";
+import { RenovarPrestamo } from "./components/RenovarPrestamo";
 
 export const AdministrarLibreriaPagina = () => {
 
@@ -12,6 +13,7 @@ export const AdministrarLibreriaPagina = () => {
 
     const [cambiarCantidadDeLibroClick, setCambiarCantidadDeLibroClick] = useState(false);
     const [updateConfimarPrestamoClick, setUpdateConfimarPrestamoClick] = useState(false);
+    const [updateRenovarPrestamoClick, setUpdateRenovarPrestamoClick] = useState(false);
 
     const [mensajesClick, setMensajesClick] = useState(false);
 
@@ -32,6 +34,11 @@ export const AdministrarLibreriaPagina = () => {
 
     function confirmarPrestamoClick() {
         setUpdateConfimarPrestamoClick(true);
+        setMensajesClick(false);
+    }
+
+    function renovarPrestamoClick() {
+        setUpdateRenovarPrestamoClick(true);
         setMensajesClick(false);
     }
 
@@ -67,6 +74,11 @@ export const AdministrarLibreriaPagina = () => {
                             type="button" role="tab" aria-controls="confirmar-prestamo" aria-selected='true'>
                             Confirmar Prestamos
                         </button>
+                        <button onClick={renovarPrestamoClick} className="nav-link"
+                            id='renovar-prestamo-tab' data-bs-toggle='tab' data-bs-target='#renovar-prestamo'
+                            type="button" role="tab" aria-controls="renovar-prestamo" aria-selected='true'>
+                            Renovar Prestamos
+                        </button>
                     </div>
                 </nav>
                 <div className="tab-content" id="nav-content">
@@ -94,6 +106,14 @@ export const AdministrarLibreriaPagina = () => {
                         aria-labelledby="confirmar-prestamo-tab">
                         {updateConfimarPrestamoClick ?
                             <><ConfirmarPrestamos /></>
+                            :
+                            <></>
+                        }
+                    </div>
+                    <div className="tab-pane fade show" id="renovar-prestamo" role="tabpanel"
+                        aria-labelledby="renovar-prestamo-tab">
+                        {updateRenovarPrestamoClick ?
+                            <><RenovarPrestamo /></>
                             :
                             <></>
                         }
