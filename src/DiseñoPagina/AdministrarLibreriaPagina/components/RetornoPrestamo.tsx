@@ -267,11 +267,80 @@ export const RetornoPrestamo: React.FC<{}> = () => {
                                                 <h6>Usuario: {prestamo.correoUsuario}</h6>
                                                 <h6>Titulo: {prestamo.libro.titulo}</h6>
                                                 <p>Autor: {prestamo.libro.autor}</p>
+                                                <p>Fecha Inicio: {prestamo.fechaPrestamo}</p>
+                                                <p>Fecha Retorno: {prestamo.fechaRetorno}</p>
                                             </div>
                                             <div className="mt-3">
                                                 <h4>Opciones:</h4>
-                                                <button className="btn btn-md btn-success m-1" onClick={() => confirmarRenovacion(prestamo.libro.id, prestamo.correoUsuario)}>Renovar</button>
-                                                <button className="btn btn-md btn-danger m-1" onClick={() => cancelarRenovacion(prestamo.libro.id, prestamo.correoUsuario)}>Cancelar Renovación</button>
+                                                {/* Button */}
+                                                <button className="btn btn-md btn-success m-1" aria-current='true'
+                                                    data-bs-toggle='modal' data-bs-target={`#mobilemodal${prestamo.libro.id}`}>
+                                                    Retornar
+                                                </button>
+                                                {/* Modal */}
+                                                <div className='modal fade' id={`mobilemodal${prestamo.libro.id}`} data-bs-backdrop='static' data-bs-keyboard='false'
+                                                    aria-labelledby='staticBackdropLabel' aria-hidden='true' key={prestamo.libro.id}>
+                                                    <div className="modal-dialog">
+                                                        {/* Content */}
+                                                        <div className="modal-content">
+                                                            <div className="modal-header">
+                                                                <h5 className="modal-title" id='staticBackdropLabel'>Confirmación de retorno</h5>
+                                                                <button type="button" className="btn" data-bs-dismiss='modal' aria-label='Close'>
+                                                                    <span aria-hidden="true">X</span>
+                                                                </button>
+                                                            </div>
+
+
+                                                            {/* Body */}
+
+                                                            <div className='modal-body'>
+                                                                <div className='container'>
+                                                                    <div className='mt-3'>
+                                                                        <div className='row'>
+
+                                                                            <div className="col-2">
+                                                                                {prestamo.libro?.img ?
+                                                                                    <img src={prestamo.libro.img} width='56' height='87' alt='libro' />
+                                                                                    :
+                                                                                    <img src={require('./../../../ImagenesWeb/Libros/rubius.jpg')} width='56' height='87' alt='libro' />
+                                                                                }
+                                                                            </div>
+                                                                            <div className="col-10">
+                                                                                <h6>{prestamo.libro.titulo}</h6>
+                                                                                <h4>{prestamo.libro.descripcion}</h4>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <hr />
+
+                                                                        <div className='list-group mt-3'>
+
+                                                                            <button onClick={() => confirmarRenovacion(prestamo.libro.id, prestamo.correoUsuario)}
+                                                                                className='btn btn-md btn-success m-1'
+                                                                                data-bs-dismiss='modal'>
+                                                                                Confirmar
+                                                                            </button>
+
+                                                                            <button
+                                                                                className='btn btn-md btn-danger m-1'
+                                                                                data-bs-dismiss='modal'>
+                                                                                Cancelar
+                                                                            </button>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+
+                                                            {/* Footer */}
+                                                            <div className="modal-footer">
+                                                                <button type="button" className="btn btn-secondary" data-bs-dismiss='modal'>Cerrar</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
