@@ -6,6 +6,7 @@ import { AnadirLibro } from "./components/AnadirLibro";
 import { ActualizarLibros } from "./components/ActualizarLibros";
 import { ConfirmarPrestamos } from "./components/ConfirmarPrestamo";
 import { RenovarPrestamo } from "./components/RenovarPrestamo";
+import { RetornoPrestamo } from "./components/RetornoPrestamo";
 
 export const AdministrarLibreriaPagina = () => {
 
@@ -14,6 +15,7 @@ export const AdministrarLibreriaPagina = () => {
     const [cambiarCantidadDeLibroClick, setCambiarCantidadDeLibroClick] = useState(false);
     const [updateConfimarPrestamoClick, setUpdateConfimarPrestamoClick] = useState(false);
     const [updateRenovarPrestamoClick, setUpdateRenovarPrestamoClick] = useState(false);
+    const [updateRetornarPrestamoClick, setUpdateRetornarPrestamoClick] = useState(false);
 
     const [mensajesClick, setMensajesClick] = useState(false);
 
@@ -39,6 +41,11 @@ export const AdministrarLibreriaPagina = () => {
 
     function renovarPrestamoClick() {
         setUpdateRenovarPrestamoClick(true);
+        setMensajesClick(false);
+    }
+
+    function retornarPrestamoClick() {
+        setUpdateRetornarPrestamoClick(true);
         setMensajesClick(false);
     }
 
@@ -79,6 +86,11 @@ export const AdministrarLibreriaPagina = () => {
                             type="button" role="tab" aria-controls="renovar-prestamo" aria-selected='true'>
                             Renovar Prestamos
                         </button>
+                        <button onClick={retornarPrestamoClick} className="nav-link"
+                            id='retornar-prestamo-tab' data-bs-toggle='tab' data-bs-target='#retornar-prestamo'
+                            type="button" role="tab" aria-controls="retornar-prestamo" aria-selected='true'>
+                            Retornar Prestamos
+                        </button>
                     </div>
                 </nav>
                 <div className="tab-content" id="nav-content">
@@ -114,6 +126,14 @@ export const AdministrarLibreriaPagina = () => {
                         aria-labelledby="renovar-prestamo-tab">
                         {updateRenovarPrestamoClick ?
                             <><RenovarPrestamo /></>
+                            :
+                            <></>
+                        }
+                    </div>
+                    <div className="tab-pane fade show" id="retornar-prestamo" role="tabpanel"
+                        aria-labelledby="retornar-prestamo-tab">
+                        {updateRetornarPrestamoClick ?
+                            <><RetornoPrestamo /></>
                             :
                             <></>
                         }
