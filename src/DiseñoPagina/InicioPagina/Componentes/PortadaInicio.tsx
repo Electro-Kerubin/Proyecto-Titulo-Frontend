@@ -38,7 +38,7 @@ export const PortadaInicio = () => {
                     <div className="col-2 col-md-4 container d-flex justify-content-center align-items-center">
                         <div className="ml-2">
                             <h1>En nuestra colección podras encontrar</h1>
-                            <p className="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis pharetra libero, et varius ipsum. Vestibulum auctor nisi et nisi auctor, convallis porta tortor placerat. Etiam commodo est vitae leo porta mattis.</p>
+                            <p className="lead">En nuestra biblioteca online con sistema de préstamos, podrás encontrar una amplia variedad de libros para disfrutar. Tenemos una colección diversa que abarca diferentes géneros literarios y temas de interés. Nuestro objetivo es brindarte opciones para satisfacer tus gustos y necesidades de lectura.</p>
                         </div>
                     </div>
                     <div className="col-sm-6 col-md-6">
@@ -57,7 +57,7 @@ export const PortadaInicio = () => {
                         <div className="mt-2">
                             <h1>¿Que has estado leyendo?</h1>
                             <p className="lead">
-                                Nos encantaria saber que has estado leyendo. <br />
+                            Nos encantaria saber que has estado leyendo. <br />
                                 Ya sea una novela o enciclopedia, te proveeremos de los mejores libros.
                             </p>
                             {authState?.isAuthenticated ?
@@ -71,7 +71,7 @@ export const PortadaInicio = () => {
                         <div className="col-image-right"></div>
                         <div className="mt-2">
                             <h1>En nuestra colección podras encontrar</h1>
-                            <p className="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis pharetra libero, et varius ipsum. Vestibulum auctor nisi et nisi auctor, convallis porta tortor placerat. Etiam commodo est vitae leo porta mattis.</p>
+                            <p className="lead">En nuestra biblioteca online con sistema de préstamos, podrás encontrar una amplia variedad de libros para disfrutar. Tenemos una colección diversa que abarca diferentes géneros literarios y temas de interés. Nuestro objetivo es brindarte opciones para satisfacer tus gustos y necesidades de lectura.</p>
                         </div>
                     </div>
                 </div>

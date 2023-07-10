@@ -3,8 +3,11 @@
 }
 
 .header {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("./ImagenesWeb/Publicas/foto-1.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("./ImagenesWeb/Publicas/portada-2.png");
     opacity: var(--mainOpacity);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     height: 25em !important;
 }
 
@@ -31,12 +34,16 @@
 }
 
 .col-image-right {
-    background-image: url("./ImagenesWeb/Publicas/foto-2.jpg");
+    background-image: url("./ImagenesWeb/Publicas/foto-libros-3.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
     height: 25em !important;
 }
 
 .lost-image {
-    background-image: url("./ImagenesWeb/Publicas/foto-3.jpg");
+    background-image: url("./ImagenesWeb/Publicas/foto-servicios-2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
     height: 25em !important;
     width: "720"
 }
