@@ -10,8 +10,8 @@ export default function Mapa() {
     // Ubicacion del mapa
     const markers = [
         {
-            geocode: [-33.027686, -71.545803],
-            popUp: "Posicion 1"
+            geocode: [-33.033355710, -71.532859800],
+            popUp: "Estación Chorrillos, Viña del Mar"
         },
         /*{
             geocode: [48.85, 2.3522],
@@ -31,7 +31,7 @@ export default function Mapa() {
 
     return (
         <MapContainer
-            center={[-33.027686, -71.545803]}
+            center={[-33.033355710, -71.532859800]}
             zoom={13}
             style={{ height: "100%", width: "100%" }}
         >
