@@ -108,7 +108,7 @@ export const RetornoPrestamo: React.FC<{}> = () => {
         if (buscarUsuario === '') {
             setSearchUrl('');
         } else {
-            setSearchUrl(`/listaprestamos/buscar?estado=${"Retorno Confirmar"}&correoUsuario=${buscarUsuario}`);
+            setSearchUrl(`/listaprestamos/buscar?estado=${"Espera Retorno"}&correoUsuario=${buscarUsuario}`);
         }
     }
 
