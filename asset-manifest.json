@@ -1,0 +1,43 @@
+{
+  "files": {
+    "main.css": "/librosvina/static/css/main.12a0999b.css",
+    "main.js": "/librosvina/static/js/main.ce6e705e.js",
+    "static/media/foto-3.jpg": "/librosvina/static/media/foto-3.9f008e1aa5f34d17078a.jpg",
+    "static/media/foto-servicios-2.jpg": "/librosvina/static/media/foto-servicios-2.ab2283efabad32c5dc6c.jpg",
+    "static/media/portada-2.png": "/librosvina/static/media/portada-2.d99a2891a9cf3d32e7ff.png",
+    "static/media/rubius.jpg": "/librosvina/static/media/rubius.989b9b08196e9051b191.jpg",
+    "static/media/montserrat-regular-webfont.svg": "/librosvina/static/media/montserrat-regular-webfont.79ee020c048c261b0a8e.svg",
+    "static/media/montserrat-light-webfont.svg": "/librosvina/static/media/montserrat-light-webfont.94b013df481681d3b9ba.svg",
+    "static/media/foto-libros-3.jpg": "/librosvina/static/media/foto-libros-3.6d62a5ff7d32dda4f67f.jpg",
+    "static/media/okticon.svg": "/librosvina/static/media/okticon.415c41974fde3d0d67e5.svg",
+    "static/media/montserrat-light-webfont.eot": "/librosvina/static/media/montserrat-light-webfont.bced23520571bb9c6786.eot",
+    "static/media/montserrat-regular-webfont.eot": "/librosvina/static/media/montserrat-regular-webfont.bc9d1c64cc1eb7fe21fc.eot",
+    "static/media/montserrat-light-webfont.ttf": "/librosvina/static/media/montserrat-light-webfont.d7f374f771a6cf745a5f.ttf",
+    "static/media/montserrat-regular-webfont.ttf": "/librosvina/static/media/montserrat-regular-webfont.e08993fa295c2e06ddad.ttf",
+    "static/media/okticon.eot": "/librosvina/static/media/okticon.a812bc2c3773a792b40a.eot",
+    "static/media/okticon.ttf": "/librosvina/static/media/okticon.af5fd3a28c69172a32bf.ttf",
+    "static/media/radiobutton-01@2x.png": "/librosvina/static/media/radiobutton-01@2x.2f10e12d6a124337f57b.png",
+    "static/media/checkbox-01@2x.png": "/librosvina/static/media/checkbox-01@2x.1294dd56f87237b78100.png",
+    "static/media/montserrat-light-webfont.woff": "/librosvina/static/media/montserrat-light-webfont.47314ef8b3f718bd6b25.woff",
+    "static/media/montserrat-regular-webfont.woff": "/librosvina/static/media/montserrat-regular-webfont.5623bc4fe19097d3a367.woff",
+    "static/media/radiobutton-01.png": "/librosvina/static/media/radiobutton-01.06ca91686a22690197da.png",
+    "static/media/okticon.woff": "/librosvina/static/media/okticon.18ead8fda945421a9af7.woff",
+    "static/media/checkbox-01.png": "/librosvina/static/media/checkbox-01.eae0329fe0b798560519.png",
+    "static/media/yubikeyDemo.png": "/librosvina/static/media/yubikeyDemo.5ebed9d6de069129f535.png",
+    "static/media/sign-on-widget-spinner.gif": "/librosvina/static/media/sign-on-widget-spinner.4d69ec9a0b3a6f2272e5.gif",
+    "static/media/marker-icon.png": "/librosvina/static/media/marker-icon.64cdcb0ef97818161310.png",
+    "static/media/u2f_usb.png": "/librosvina/static/media/u2f_usb.a1709529eeac1fb1f4ee.png",
+    "static/media/apple-app-store.svg": "/librosvina/static/media/apple-app-store.8c4986ee4828b47d16f5.svg",
+    "static/media/checkbox-sign-in-widget@2x.png": "/librosvina/static/media/checkbox-sign-in-widget@2x.c357e3c0ce3a6ad6d0b8.png",
+    "static/media/loader@1x.gif": "/librosvina/static/media/loader@1x.d322a7ce99c785c18f38.gif",
+    "static/media/google-play-store.svg": "/librosvina/static/media/google-play-store.1d8f7bc81e1b4193482d.svg",
+    "static/media/user-icon.svg": "/librosvina/static/media/user-icon.6c8f8491ebb11a78bf68.svg",
+    "index.html": "/librosvina/index.html",
+    "main.12a0999b.css.map": "/librosvina/static/css/main.12a0999b.css.map",
+    "main.ce6e705e.js.map": "/librosvina/static/js/main.ce6e705e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.12a0999b.css",
+    "static/js/main.ce6e705e.js"
+  ]
+}
